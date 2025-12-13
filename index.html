@@ -4,13 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>memory blocks game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <p>memory blocks game</p>
+    </header>
     <main>
+        <section id="heroSec">
+            <h1>Welcome to our <span>memory blocks</span> game</h1>
+            <h2>Let's start !</h2>
+        </section>
+        <section id="details">
+            <p id="rightCounter"><span>Right Answers:</span></p>
+            <p id="wrongCounter"><span>Wrong Answers:</span></p>
+            <p id="timer"><span>Time:</span></p>
+        </section>
         <section id="cardsCon">
             <div class="back"><img src="imgs/banana.png" alt="banana" class="imgDisappear"></div>
             <div class="back"><img src="imgs/burger.png" alt="burger" class="imgDisappear"></div>
@@ -37,9 +48,14 @@
             <div class="back"><img src="imgs/icecreem.png" alt="icecreem" class="imgDisappear"></div>
             <div class="back"><img src="imgs/pizza.png" alt="pizza" class="imgDisappear"></div>
             <div class="back"><img src="imgs/taco.png" alt="taco" class="imgDisappear"></div>
+            <section id="startCon">
+                <button id="start">Start</button>
+            </section>
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        <p>&copy; made by Nada Tarek</p>
+    </footer>
 
     <script src="main.js"></script>
 </body>
