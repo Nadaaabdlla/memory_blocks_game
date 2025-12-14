@@ -1,6 +1,7 @@
 let cards = document.querySelectorAll("div");
 let imgs = document.querySelectorAll("img");
 let start = document.querySelector("#start");
+let end = document.querySelector("#end");
 let startCon = document.querySelector("#startCon");
 let rightCounterP = document.querySelector("#rightCounter");
 let wrongCounterP = document.querySelector("#wrongCounter");
@@ -17,23 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 start.addEventListener("click", () => {
     startCon.style.display = "none";
-    let timeCounter = setInterval(() => { timer.innerHTML = `<span>Time:</span> ${timerSec++} second`; }, 1000);
-    setInterval(() => {
-        if ([...cards].every(card => card.querySelector("img").classList.contains("clicked"))) {
-            clearInterval(timeCounter);
-            
-        };
-    }, 1000);
+    setTimeout(() => {
+        let timeCounter = setInterval(() => { timer.innerHTML = `<span>Time:</span> ${timerSec++} second`; }, 1000);
+        setInterval(() => {
+            if ([...cards].every(card => card.querySelector("img").classList.contains("clicked"))) {
+                clearInterval(timeCounter);
+            };
+        }, 1000);
+    }, 4000);
     setTimeout(() => {
         cards.forEach((card) => {
             card.classList.remove("back");
-            card.querySelector("img").classList.remove("imgDisappear");
+            card.querySelector("img").classList.remove("disappear");
         });
     }, 0);
     setTimeout(() => {
         cards.forEach((card) => {
             card.classList.add("back");
-            card.querySelector("img").classList.add("imgDisappear");
+            card.querySelector("img").classList.add("disappear");
         });
     }, 5000);
 });
@@ -44,7 +46,7 @@ cards.forEach((card) => {
         currentCard.classList.add("transform");
         currentCard.classList.remove("back");
         img.classList.add("clicked");
-        img.classList.remove("imgDisappear");
+        img.classList.remove("disappear");
         compareName.push(img.alt);
         openedCard.push(currentCard);
         if (compareName.length === 2) {
@@ -54,7 +56,7 @@ cards.forEach((card) => {
                         e.classList.remove("transform");
                         e.classList.add("back");
                         e.querySelector("img").classList.remove("clicked");
-                        e.querySelector("img").classList.add("imgDisappear");
+                        e.querySelector("img").classList.add("disappear");
                     });
                     compareName = [];
                     openedCard = [];
@@ -66,7 +68,13 @@ cards.forEach((card) => {
                 openedCard = [];
                 rightCounter++;
                 rightCounterP.innerHTML = `<span>Right Answers:</span> ${rightCounter}`;
+                if (rightCounter == 12) {
+                    endCon.classList.remove("disappear");;
+                };
             };
         }
     });
+});
+end.addEventListener("click", () => {
+    location.reload();
 });
